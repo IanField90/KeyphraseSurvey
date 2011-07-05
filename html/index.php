@@ -10,12 +10,12 @@
 
 		<?php
 		session_start();
-		$sel_home = "selected"; $sel_about = "";
-		$MAX_SELECTIONS = 15;
+		$sel_home = "selected"; $sel_about = ""; //used for CSS
+		$MAX_SELECTIONS = 15;	$NUM_ROWS = 20000; //Constants-ish
 		echo '<div id="container">';
 		include 'navigation_bar.php';
 		echo '<br /><br />';
-		//	$rand = rand(1, 20000);
+		//	$rand = rand(1, $NUM_ROWS);
 		//  $_SESSION['entryID'] = $rand;
 		//	$query = "SELECT * FROM Entries WHERE Entry_ID = ".$rand;
 		//	include 'db_conn/config.php';
