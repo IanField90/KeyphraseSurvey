@@ -1,14 +1,23 @@
 <html>
 	<head>
-		<title>Keyphrase input</title>
+		<title>Base - About</title>
 		<link rel="stylesheet" type="text/css" href="../css/reset.css">
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
 	<body>
-		<?php include 'navigation_bar.php';	?>
 		<div id="container">
-			<h1>About</h1>
+			<?php
+			 	$sel_home = ""; $sel_about = "selected";
+				include '../navigation_bar.php';	
+				echo '<br /><br />'
+			?>
+				
+				<div id="content">
+					<h1>About</h1>
+					<br />
+					This is something awesome.
+				</div>
+			<?php include '../footer.php'; ?>
 		</div>
-		<?php include 'footer.php'; ?>
 	</body>
 </html>

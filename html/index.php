@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Keyphrase input</title>
+		<title>Base - Home</title>
 		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script type="text/javascript" src="javascript/form.js"></script>
@@ -8,6 +8,7 @@
 	<body>
 
 		<?php
+		$sel_home = "selected"; $sel_about = "";
 		echo '<div id="container">';
 		include 'navigation_bar.php';
 		echo '<br /><br />';
@@ -18,8 +19,8 @@
 		//	$result = mysql_query($query);
 		//	$row = mysql_fetch_array($result, MYSQL_ASSOC);
 			
-			echo '<div id="corpus">';
-			$title = "Corpus Title"; // $row['Corpus_Title'];
+			echo '<div id="content">';
+			$title = "Title"; // $row['Corpus_Title'];
 			$body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id mauris arcu. Nam mollis tellus vel turpis facilisis et aliquet velit ultricies. Suspendisse elit nibh, elementum a faucibus eu, eleifend vitae quam. Sed vitae tellus quis libero scelerisque vehicula tempus at elit. Nullam ac lectus nunc. Mauris eget dui dui. Curabitur est ipsum, tincidunt nec rhoncus eget, vehicula et ligula. Vestibulum lectus tellus, mollis ac molestie eu, ornare sit amet tellus. Aliquam sed aliquam justo. In a felis eros, at molestie purus."; 
 			//$row['Corpus_Body'];
 			$keywords = array("Bravo", "Alpha", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "Indigo", "Juliette", "Kilo", "Leema", "Mike", "November", "Oscar"); 
