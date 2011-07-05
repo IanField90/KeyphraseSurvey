@@ -9,15 +9,15 @@
 			<?php
 			 	$sel_home = ""; $sel_about = "selected";
 				include '../navigation_bar.php';	
-				echo '<br /><br />'
+				echo '<br /><br />';
 			?>
 				
 				<div id="content">
 					<h1>About</h1>
 					<br />
 					This is something awesome.
+					<?php include '../footer.php'; ?>
 				</div>
-			<?php include '../footer.php'; ?>
 		</div>
 	</body>
 </html>

@@ -3,6 +3,7 @@
 		<title>Base - Home</title>
 		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src ="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 		<script type="text/javascript" src="javascript/form.js"></script>
 	</head>
 	<body>
@@ -29,6 +30,8 @@
 
 			$sorted_keywords = $keywords;
 			sort($sorted_keywords);
+			
+			//TODO determine keyword order changes
 			$_SESSION['keywords_original'] = $keywords; //used to check original location
 			$_SESSION['keywords_sorted'] = $sorted_keywords; //used to check ordered location
 			//Use ordered checkbox index (selectedWords.index;)
@@ -38,13 +41,13 @@
 			echo '<p>';
 			echo $body;
 			echo '<p>';
-			echo'<form name="entry" action="" method="post">';
+			echo'<form name="entry" action="process_entry.php" method="post">';
 			echo '<input type="radio" name="inputChoice" value="options" onClick="radioSelection()"/>Select options from bellow.';
 			echo '<table class="list">';
 			for($i=1; $i<4; $i++){
 				echo '<tr>';
 				for($j=0; $j<5; $j++){
-					echo '<td><input type="checkbox" name="selectedWords" />' . $sorted_keywords[(($i-1)*5) + $j] . '</td>';
+					echo '<td><input type="checkbox" name="selectedWords[]" />' . $sorted_keywords[(($i-1)*5) + $j] . '</td>';
 				}
 				echo '</tr>';
 			}
