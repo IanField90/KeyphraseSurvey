@@ -25,7 +25,7 @@ function prepareForm(){
 					}
 				}
 		
-		//TODO set up form data POST form to php page
+		// set up form data POST form to php page
 		var selections = document.getElementsByName("selectedWords[]");
 		var selected = new Array(MAX_SELECTIONS);
 		for(var i=0; i<MAX_SELECTIONS; i++){

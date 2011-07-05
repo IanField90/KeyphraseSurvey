@@ -9,11 +9,14 @@
 	<body>
 
 		<?php
+		session_start();
 		$sel_home = "selected"; $sel_about = "";
+		$MAX_SELECTIONS = 15;
 		echo '<div id="container">';
 		include 'navigation_bar.php';
 		echo '<br /><br />';
-		//	$rand = 4;
+		//	$rand = rand(1, 20000);
+		//  $_SESSION['entryID'] = $rand;
 		//	$query = "SELECT * FROM Entries WHERE Entry_ID = ".$rand;
 		//	include 'db_conn/config.php';
 		//	include 'db_conn/opendb.php';
@@ -31,11 +34,18 @@
 			$sorted_keywords = $keywords;
 			sort($sorted_keywords);
 			
-			//TODO determine keyword order changes
-			$_SESSION['keywords_original'] = $keywords; //used to check original location
-			$_SESSION['keywords_sorted'] = $sorted_keywords; //used to check ordered location
-			//Use ordered checkbox index (selectedWords.index;)
-			
+			$positions;
+			for($i=0; $i<$MAX_SELECTIONS; $i++){
+				for($j=0; $j<$MAX_SELECTIONS; $j++){
+					if($keywords[$i] == $sorted_keywords[$j]){
+						//If keyword i is now the same as j
+						$positions[$i] = $j;
+					}
+				}
+			}
+			//print_r($positions);
+			//O(N^2) - nasty
+			$_SESSION['positions'] = $positions;
 			
 			echo '<h1>' . $title . '</h1>';
 			echo '<p>';
