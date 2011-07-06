@@ -1,10 +1,14 @@
 <div id="footer">
 	<ul>
 		<li>
-			<a href="/SummerStudent/./html/content">
+			<a href="/SummerStudent/./html/content/terms.php">
 				Terms and Conditions
 			</a>
 		</li>
-		<li>Privacy Policy</li>
+		<li>
+			<a href="/SummerStudent/./html/content/privacy.php">
+				Privacy Policy
+			</a>
+		</li>
 	</ul>
 </div>

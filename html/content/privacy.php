@@ -7,7 +7,7 @@
 	<body>
 		<div id="container">
 			<?php
-			 	$sel_home = ""; $sel_about = "selected";
+//			 	$sel_home = ""; $sel_about = "selected";
 				include '../navigation_bar.php';	
 				echo '<br /><br />';
 			?>
