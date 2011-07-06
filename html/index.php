@@ -70,7 +70,8 @@
 		<p />
 		<input type="button" value="Submit" id="subButton" onClick="prepareForm()"/>
 		</form>
-		
+		</div>
 		<?php include 'footer.php'; ?>
+		</div>
 	</body>
 </html>

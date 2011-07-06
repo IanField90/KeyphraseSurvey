@@ -12,10 +12,10 @@
 				echo '<br /><br />';
 			?>
 
-				<div id="content">
-					<h1>Privacy</h1>
-					<?php include '../footer.php'; ?>
-				</div>
+			<div id="content">
+				<h1>Privacy</h1>
+			</div>
+			<?php include '../footer.php'; ?>
 		</div>
 	</body>
 </html>
