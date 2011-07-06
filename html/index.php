@@ -57,7 +57,7 @@
 			for($i=1; $i<4; $i++){
 				echo '<tr>';
 				for($j=0; $j<5; $j++){
-					echo '<td><input type="checkbox" name="selectedWords[]" />' . $sorted_keywords[(($i-1)*5) + $j] . '</td>';
+					echo '<td><input type="checkbox" name="selectedWords[]" onclick="chk_click()"/>' . $sorted_keywords[(($i-1)*5) + $j] . '</td>';
 				}
 				echo '</tr>';
 			}

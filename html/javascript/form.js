@@ -15,40 +15,33 @@ function radioSelection(){
 	}	
 }
 
+function chk_click(){
+	//Selection radio button on automatically
+	document.entry.inputChoice[0].checked = true;
+}
+
 function prepareForm(){
 	if(document.entry.inputChoice[0].checked == true){
-		//Select from list
-		for(var i=0; i<MAX_SELECTIONS; i++){
-					if(document.getElementsByName("selectedWords[]")[i].checked == true){
-					}else{
-						selectedIndexes[i] = false;
-					}
-				}
-		
 		// set up form data POST form to php page
 		var selections = document.getElementsByName("selectedWords[]");
 		var selected = new Array(MAX_SELECTIONS);
 		for(var i=0; i<MAX_SELECTIONS; i++){
+			//fill selected array with all checked status
 			selected[i] = selections[i].checked;
 		}
 		
-		
+		//this only sends the checked ones. e.g. 111 for 10000101000...
+		//selected array used as workaround
 		$.post("process_entry.php", { 'choices[]': selected }, function(data){
-			alert(data);//Completed Thanks!
+			alert("Thank-you for your time!");//Completed Thanks!
 			location.reload(true);
 		});
 	}
 	else if(document.entry.inputChoice[1].checked == true){
 		//None from above.
-		for(var i=0; i<MAX_SELECTIONS; i++){
-			document.getElementsByName("selectedWords[]")[i].checked = false;
-			selectedIndexes[i] = false;
-		}
-		
-		var selections = document.getElementsByName("selectedWords[]");
 		var selected = new Array(MAX_SELECTIONS);
 		for(var i=0; i<MAX_SELECTIONS; i++){
-			selected[i] = selections[i].checked;
+			selected[i] = false;
 		}
 		
 		$.post("process_entry.php", { 'choices[]': selected }, function(data){

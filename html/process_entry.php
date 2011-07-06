@@ -15,10 +15,12 @@
 	// get session duplets for Word[new_pos][original_pos];
  	$positions = $_SESSION['positions'];
  	$db_choices;
+	$db_choices_string;
  	for($i=0; $i<$MAX_SELECTIONS; $i++){
  		$db_choices[$i] = $choices[$positions[$i]];
+		$db_choices_string += ',' . $db_choices[$i];
  	}
-	//TODO Use $db_choices to update the database
+	//TODO Use $db_choices to update the database (boolean)
 	
-	//INSERT INTO table values ($_SESSION['entryID'], $db_choices[0 to $MAX_SELECTIONS]);
+	//INSERT INTO table values ($_SESSION['entryID'] . $db_choices_string);
 ?>
