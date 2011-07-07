@@ -1,6 +1,6 @@
 <?php
-	$dbhost = 'localhost';
-	$dbname = 'mydatabase';
-	$dbuser = 'admin';
-	$dbpass = 'password';	
+	$dbhost = 'localhost:8889';
+	$dbname = 'test';
+	$dbuser = 'root';
+	$dbpass = 'root';	
 ?>

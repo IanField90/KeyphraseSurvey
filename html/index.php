@@ -9,26 +9,30 @@
 	<body>
 
 		<?php
-		session_start();
-		$sel_home = "selected"; $sel_about = ""; //used for CSS
-		$MAX_SELECTIONS = 15;	$NUM_ROWS = 20000; //Constants-ish
-		echo '<div id="container">';
-		include 'navigation_bar.php';
-		echo '<br /><br />';
-		//	$rand = rand(1, $NUM_ROWS);
-		//  $_SESSION['entryID'] = $rand;
-		//	$query = "SELECT * FROM Entries WHERE Entry_ID = ".$rand;
-		//	include 'db_conn/config.php';
-		//	include 'db_conn/opendb.php';
-		//	$result = mysql_query($query);
-		//	$row = mysql_fetch_array($result, MYSQL_ASSOC);
+			session_start();
+			$sel_home = "selected"; $sel_about = ""; //used for CSS
+			$MAX_SELECTIONS = 15;
+			include 'db_conn/config.php';
+			include 'db_conn/opendb.php';
+			$result = mysql_query("SELECT count(*) FROM entries");
+			$result = mysql_fetch_array($result);
+			$rand = rand(1, $result[0]);
+		  	$_SESSION['entryID'] = $rand;
+			$query = "SELECT * FROM Entries WHERE Entry_ID = ".$rand;
+			$result = mysql_query($query);
+			$row = mysql_fetch_array($result, MYSQL_ASSOC);
+			if(count($result) == 0){
+				//Error with DB query
+			}
+			include 'db_conn/closedb.php';
+// Remove and replace with database query, handle DB connection errors
+//			$row['corpus_title'] = "Title";
+//			$row['corpus_body'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id mauris arcu. Nam mollis tellus vel turpis facilisis et aliquet velit ultricies. Suspendisse elit nibh, elementum a faucibus eu, eleifend vitae quam. Sed vitae tellus quis libero scelerisque vehicula tempus at elit. Nullam ac lectus nunc. Mauris eget dui dui. Curabitur est ipsum, tincidunt nec rhoncus eget, vehicula et ligula. Vestibulum lectus tellus, mollis ac molestie eu, ornare sit amet tellus. Aliquam sed aliquam justo. In a felis eros, at molestie purus."; 
+//			$keywords = array("Bravo", "Alpha", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "Indigo", "Juliette", "Kilo", "Leema", "Mike", "November", "Oscar"); 
 			
-			echo '<div id="content">';
-			$title = "Title"; // $row['Corpus_Title'];
-			$body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id mauris arcu. Nam mollis tellus vel turpis facilisis et aliquet velit ultricies. Suspendisse elit nibh, elementum a faucibus eu, eleifend vitae quam. Sed vitae tellus quis libero scelerisque vehicula tempus at elit. Nullam ac lectus nunc. Mauris eget dui dui. Curabitur est ipsum, tincidunt nec rhoncus eget, vehicula et ligula. Vestibulum lectus tellus, mollis ac molestie eu, ornare sit amet tellus. Aliquam sed aliquam justo. In a felis eros, at molestie purus."; 
-			//$row['Corpus_Body'];
-			$keywords = array("Bravo", "Alpha", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "Indigo", "Juliette", "Kilo", "Leema", "Mike", "November", "Oscar"); 
-			//array($row['A1'], $row['A2'], $row['A3'], $row['A4'], $row['A5'], $row['B1'], $row['B2'], $row['B3'], $row['B4'], $row['B5'], $row['C1'], $row['C2'], $row['C3'], $row['C4'], $row['C5']);
+			$title = $row['corpus_title'];
+			$body = $row['corpus_body'];
+			$keywords = array($row['a1'], $row['a2'], $row['a3'], $row['a4'], $row['a5'], $row['b1'], $row['b2'], $row['b3'], $row['b4'], $row['b5'], $row['c1'], $row['c2'], $row['c3'], $row['c4'], $row['c5']);
 			
 
 			$sorted_keywords = $keywords;
@@ -46,6 +50,12 @@
 			//print_r($positions);
 			//O(N^2) - nasty
 			$_SESSION['positions'] = $positions;
+			//TODO duplicate detection - one tickbox for 2+ db column entries
+			
+			echo '<div id="container">';
+			include 'navigation_bar.php';
+			echo '<br /><br />';
+			echo '<div id="content">';
 			
 			echo '<h1>' . $title . '</h1>';
 			echo '<p>';
@@ -62,7 +72,7 @@
 				echo '</tr>';
 			}
 			echo '</table>';			
-		//	include 'db_conn/closedb.php';
+			
 		?>
 
 		<p />
