@@ -22,7 +22,7 @@
 			$result = mysql_query($query);
 			$row = mysql_fetch_array($result, MYSQL_ASSOC);
 			if(count($result) == 0){
-				//Error with DB query
+				//TODO Error with DB query
 			}
 			include 'db_conn/closedb.php';
 			$title = $row['corpus_title'];
@@ -33,17 +33,24 @@
 			$sorted_keywords = $keywords;
 			sort($sorted_keywords);
 			
+			// duplicate detection - one tickbox for 2+ db column entries
+			//Unique keywords, then determine locations
+			
+			$sorted_keywords = array_unique($sorted_keywords);
+			
 			$positions;
+			// i is original location
 			for($i=0; $i<$MAX_SELECTIONS; $i++){
-				for($j=0; $j<$MAX_SELECTIONS; $j++){
+				// j is new location
+				for($j=0; $j<count($sorted_keywords); $j++){
 					if($keywords[$i] == $sorted_keywords[$j]){
 						//If keyword i is now the same as j
-						$positions[$i] = $j;
+						$positions[$i] = $j; //j is new location, stored in index i
+
 					}
 				}
 			}
-			$_SESSION['positions'] = $positions;
-			//TODO duplicate detection - one tickbox for 2+ db column entries
+			$_SESSION['positions'] = $positions; //store for access on updating the database
 			
 			echo '<div id="container">';
 			include 'navigation_bar.php';
@@ -54,11 +61,24 @@
 			echo '<input type="radio" name="inputChoice" value="options" onClick="radioSelection()"/>Select options from bellow.';
 			echo '<table class="list">';
 			
-			//TODO duplicate display support
+			//TODO duplicate display support (funky maths)
+			//must start at 1! :P
+			$counter = 0;
+			$count_max = count($sorted_keywords);
 			for($i=1; $i<4; $i++){
+				//rows
 				echo '<tr>';
 				for($j=0; $j<5; $j++){
-					echo '<td><input type="checkbox" name="selectedWords[]" onclick="chk_click()"/>' . $sorted_keywords[(($i-1)*5) + $j] . '</td>';
+					//columns
+					if($counter < $count_max){
+						if($sorted_keywords[$counter] != NULL){
+							echo '<td><input type="checkbox" name="selectedWords[]" onclick="chk_click()"/>' . $sorted_keywords[$counter] .'</td>';
+						}else{
+							$count_max++;//allow another print
+							$j--;//don't just leave a gap
+						}
+						$counter++;	
+					}
 				}
 				echo '</tr>';
 			}
