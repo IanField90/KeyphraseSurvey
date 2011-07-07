@@ -1,7 +1,7 @@
 body{
 	font-family: Arial, Helvetica, Verdana, sans-serif;
 	text-align:justify;
-	background:#DDDDDD none repeat scroll 0% 0%;
+	background: #67C8FF none repeat scroll 0% 0%; /*#DDDDDD   #1E90FF*/
 }
 
 .list{
@@ -74,8 +74,10 @@ h1{
 	padding:15px 20px 15px 20px;
 	border-radius: 10px;
 	-moz-border-radius: 10px;
+	/*
 	-webkit-box-shadow:5px 5px 5px #999;
 	-moz-box-shadow:5px 5px 5px #999;
+	*/
 }
 
 #content ul, li{
