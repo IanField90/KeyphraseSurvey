@@ -33,7 +33,8 @@ function prepareForm(){
 		//this only sends the checked ones. e.g. 111 for 10000101000...
 		//selected array used as workaround
 		$.post("process_entry.php", { 'choices[]': selected }, function(data){
-			alert("Thank-you for your time!");//Completed Thanks!
+			alert(data);
+			//alert("Thank-you for your time!");//Completed Thanks!
 			location.reload(true);
 		});
 	}

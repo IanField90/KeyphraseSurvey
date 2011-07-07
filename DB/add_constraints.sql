@@ -1,3 +1,4 @@
 ALTER TABLE entries ADD PRIMARY KEY (entry_id), MODIFY COLUMN entry_id MEDIUMINT AUTO_INCREMENT;
 
-ALTER TABLE selections ADD PRIMARY KEY (selection_id), ADD CONSTRAINT selection_fk FOREIGN KEY (entry_id) REFERENCES entries(entry_id) ON DELETE CASCADE;
+ALTER TABLE selections ADD PRIMARY KEY (selection_id), ADD CONSTRAINT selection_fk FOREIGN KEY (entry_id) REFERENCES entries(entry_id) ON DELETE CASCADE,
+	MODIFY COLUMN selection_id MEDIUMINT AUTO_INCREMENT;

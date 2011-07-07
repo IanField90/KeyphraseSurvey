@@ -24,7 +24,7 @@ CREATE TABLE entries(
 CREATE TABLE selections(
 	selection_id MEDIUMINT /*NOT NULL AUTO_INCREMENT PRIMARY KEY*/,
 	entry_id MEDIUMINT,
-	user_ip VARCHAR(9),
+	user_ip VARCHAR(12),
 	selection_time DATETIME,
 	a1 BOOLEAN,
 	a2 BOOLEAN,
