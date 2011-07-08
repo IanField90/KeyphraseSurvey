@@ -57,8 +57,8 @@
 			echo '<br /><br />';
 			echo '<div id="content"><h1>' . $title . '</h1>';
 			echo '<p>' . $body . '<p>';
-			echo'<form name="entry" action="process_entry.php" method="post">';
-			echo '<input type="radio" name="inputChoice" value="options" onClick="radioSelection()"/>Select options from bellow.';
+			echo '<form name="entry" action="process_entry.php" method="post">';
+			echo '<input type="radio" name="inputChoice" value="options" onClick="radioSelection()"/>Select options from below.';
 			echo '<table class="list">';
 			
 			//TODO duplicate display support (funky maths)
