@@ -13,9 +13,9 @@
 			?>
 				
 				<div id="content">
-					<h1>About</h1>
+					<h1><?php echo $about_page_title;?></h1>
 					<br />
-					Understanding the themes of documents....
+					<?php include '../config/about.php';?>
 				</div>
 				<?php include '../footer.php'; ?>
 				
