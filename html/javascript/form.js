@@ -1,4 +1,4 @@
-var MAX_SELECTIONS = 15;
+var MAX_SELECTIONS = 15; //normally 15, changes on load depending on duplicates
 var selectedIndexes = new Array(MAX_SELECTIONS);
 
 $(document).ready(function(){
@@ -38,9 +38,8 @@ function prepareForm(){
 		
 		//this only sends the checked ones. e.g. 111 for 10000101000 selected array used as workaround
 		$.post("process_entry.php", { 'choices[]': selected }, function(data){
-			alert(data);
-			//alert("Thank-you for your time!");//Completed Thanks!
-			location.reload(true);
+			alert("Thank-you for your time!");
+			location.reload(true); // display a new page
 		});
 	}
 	else if(document.entry.inputChoice[1].checked == true){
@@ -52,7 +51,7 @@ function prepareForm(){
 		
 		$.post("process_entry.php", { 'choices[]': selected }, function(data){
 			alert("Thank-you for your time!");
-			location.reload(true);
+			location.reload(true); // display a new page
 		});
 	}
 	else{

@@ -1,4 +1,3 @@
-<?php include 'config/locales.php';?>
 <div id="nav">
 	<ul>
 		<li>
@@ -8,7 +7,7 @@
 		</li>
 		<li>
 			<a href="/SummerStudent/html/About" class="<?php echo $sel_about; ?>">
-				<?php echo$link_about; ?>
+				<?php echo $link_about; ?>
 			</a>
 		</li>
 	</ul>

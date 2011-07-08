@@ -1,6 +1,11 @@
+<?php 
+	//This ensures that the locale customisations are included
+	include '../config/locales.php';
+?>
 <html>
+	<!-- This file serves as the about page, populated by configuration settings -->
 	<head>
-		<title>Base - About</title>
+		<title><?php echo $site_name . " - " . $link_about;?></title>
 		<link rel="stylesheet" type="text/css" href="../css/reset.css">
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>

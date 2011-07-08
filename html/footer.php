@@ -1,3 +1,4 @@
+<!-- Just a footer to include on every page -->
 <div id="footer">
 	<ul>
 		<li>

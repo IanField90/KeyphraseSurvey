@@ -1,6 +1,10 @@
+<?php 
+	//This ensures that the locale customisations are included
+	include 'config/locales.php';
+?>
 <html>
 	<head>
-		<title>Base - Home</title>
+		<title><?php echo $site_name . " - " . $link_home;?></title>
 		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script type="text/javascript" src ="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
@@ -12,19 +16,31 @@
 			session_start();
 			$sel_home = "selected"; $sel_about = ""; //used for CSS
 			$MAX_SELECTIONS = 15;
+			//Set up and open database
 			include 'db_conn/config.php';
-			include 'db_conn/opendb.php';
+			include 'db_conn/opendb.php'; //If this fails then
+			
+			//Find out the number of database rows
 			$result = mysql_query("SELECT count(*) FROM entries");
 			$result = mysql_fetch_array($result);
+			if(count($result) == 0){
+				echo 'An error occurred while retrieving from the database';
+				return -1;
+			}
+			
+			//Get a random entry from the database, ensuring that it is in range
 			$rand = rand(1, $result[0]);
 		  	$_SESSION['entryID'] = $rand;
 			$query = "SELECT * FROM Entries WHERE Entry_ID = ".$rand;
 			$result = mysql_query($query);
 			$row = mysql_fetch_array($result, MYSQL_ASSOC);
 			if(count($result) == 0){
-				//TODO Error with DB query
+				echo 'An error occurred while retrieving from the database';
+				return -1;
 			}
 			include 'db_conn/closedb.php';
+			
+			//If this is reached then there is a database row and the rest of the page should complete
 			$title = $row['corpus_title'];
 			$body = $row['corpus_body'];
 			$keywords = array($row['a1'], $row['a2'], $row['a3'], $row['a4'], $row['a5'], $row['b1'], $row['b2'], $row['b3'], $row['b4'], $row['b5'], $row['c1'], $row['c2'], $row['c3'], $row['c4'], $row['c5']);
@@ -35,8 +51,7 @@
 			
 			// duplicate detection - one tickbox for 2+ db column entries
 			//Unique keywords, then determine locations
-			
-			$sorted_keywords = array_unique($sorted_keywords);
+			$sorted_keywords = array_unique($sorted_keywords); //Index is retained, but empty
 			
 			$positions;
 			// i is original location
@@ -61,21 +76,21 @@
 			echo '<input type="radio" name="inputChoice" value="options" onClick="radioSelection()"/>Select options from below.';
 			echo '<table class="list">';
 			
-			//TODO duplicate display support (funky maths)
-			//must start at 1! :P
-			$counter = 0;
+			$counter = 0; //Used for keyword index
 			$count_max = count($sorted_keywords);
-			for($i=1; $i<4; $i++){
+			for($i=0; $i<3; $i++){
 				//rows
 				echo '<tr>';
 				for($j=0; $j<5; $j++){
 					//columns
 					if($counter < $count_max){
+						//if keyword array is not blank (retained index) then display check box for it
 						if($sorted_keywords[$counter] != NULL){
 							echo '<td><input type="checkbox" name="selectedWords[]" onclick="chk_click()"/>' . $sorted_keywords[$counter] .'</td>';
 						}else{
+							//empty index so allow another item to be processed
 							$count_max++;//allow another print
-							$j--;//don't just leave a gap
+							$j--;//don't just leave an empty check box
 						}
 						$counter++;	
 					}
