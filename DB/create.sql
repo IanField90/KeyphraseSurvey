@@ -1,6 +1,6 @@
 /*drop table entries;*/
 CREATE TABLE entries(
-	entry_id MEDIUMINT /*NOT NULL AUTO_INCREMENT PRIMARY KEY*/,
+	entry_id MEDIUMINT,
 	corpus_title VARCHAR(100),
 	corpus_body VARCHAR(2500),
 	a1 VARCHAR(100),
@@ -22,7 +22,7 @@ CREATE TABLE entries(
 
 /*drop table selections;*/
 CREATE TABLE selections(
-	selection_id MEDIUMINT /*NOT NULL AUTO_INCREMENT PRIMARY KEY*/,
+	selection_id MEDIUMINT,
 	entry_id MEDIUMINT,
 	user_ip VARCHAR(12),
 	selection_time DATETIME,
@@ -40,7 +40,5 @@ CREATE TABLE selections(
 	c2 BOOLEAN,
 	c3 BOOLEAN,
 	c4 BOOLEAN,
-	c5 BOOLEAN /*,
-	FOREIGN KEY(entry_id) REFERENCES entries(entry_id)
-	*/
+	c5 BOOLEAN
 );

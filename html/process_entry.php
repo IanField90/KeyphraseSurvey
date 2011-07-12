@@ -11,6 +11,7 @@
 	
 	// check all that were selected and create more friendly array to handle
 	for($i=0; $i< count($_POST["choices"]); $i++){
+		// is treated as a string
 		if($_POST["choices"][$i] == "true"){
 			$choices[$i] = true;
 		}
@@ -36,6 +37,7 @@
 	include 'db_conn/opendb.php';
 	mysql_query($sql); // Update the database
 	include 'db_conn/closedb.php';
+	echo 'OK';
 	
 ?>
 

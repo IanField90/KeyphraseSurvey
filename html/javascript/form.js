@@ -28,15 +28,16 @@ function chk_click(){
 
 function prepareForm(){
 	if(document.entry.inputChoice[0].checked == true){
+		//Select from list below.
 		// set up form data POST form to php page
 		var selections = document.getElementsByName("selectedWords[]");
 		var selected = new Array(MAX_SELECTIONS);
 		for(var i=0; i<MAX_SELECTIONS; i++){
 			//fill selected array with all checked status
-			selected[i] = selections[i].checked;
+			selected[i] = selections[i].checked; //without this would just get 111, no 0's
 		}
 		
-		//this only sends the checked ones. e.g. 111 for 10000101000 selected array used as workaround
+		// 10000101000 selected array used
 		$.post("process_entry.php", { 'choices[]': selected }, function(data){
 			alert("Thank-you for your time!");
 			location.reload(true); // display a new page
@@ -45,10 +46,10 @@ function prepareForm(){
 	else if(document.entry.inputChoice[1].checked == true){
 		//None from above.
 		var selected = new Array(MAX_SELECTIONS);
+		//Even if checked don't count them
 		for(var i=0; i<MAX_SELECTIONS; i++){
 			selected[i] = false;
 		}
-		
 		$.post("process_entry.php", { 'choices[]': selected }, function(data){
 			alert("Thank-you for your time!");
 			location.reload(true); // display a new page
