@@ -3,7 +3,7 @@
 	$MAX_SELECTIONS = 15;
 	$choices;
 	
-	// check the page hit is legitimate by app, not just visit hit
+	// check the page hit is legitimate, visit - not just a hit
 	if(!isset($_SESSION['entryID'])){
 		echo 'This page cannot be viewed.';
 		return -1;

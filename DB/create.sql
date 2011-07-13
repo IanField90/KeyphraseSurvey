@@ -1,3 +1,5 @@
+CREATE DATABASE test;
+
 /*drop table entries;*/
 CREATE TABLE entries(
 	entry_id MEDIUMINT,
