@@ -87,7 +87,8 @@
 					if($counter < $count_max){
 						//if keyword array is not blank (retained index) then display check box for it
 						if($sorted_keywords[$counter] != NULL){
-							echo '<td><input type="checkbox" name="selectedWords[]" onclick="chk_click()"/>' . $sorted_keywords[$counter] .'</td>';
+							echo '<td><input type="checkbox" name="selectedWords[]" onclick="chk_click()"/></td>'.
+							 '<td class="keyword">'. $sorted_keywords[$counter] .'</td>';
 						}else{
 							//empty index so allow another item to be processed
 							$count_max++;//allow another check box to be printed
