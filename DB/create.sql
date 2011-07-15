@@ -1,6 +1,6 @@
 CREATE DATABASE test;
 
-/*drop table entries;*/
+/*DROP TABLE ENTRIES;*/
 CREATE TABLE entries(
 	entry_id MEDIUMINT,
 	corpus_title VARCHAR(100),
@@ -22,7 +22,7 @@ CREATE TABLE entries(
 	c5 VARCHAR(100)
 );
 
-/*drop table selections;*/
+/*DROP TABLE SELECTIONS;*/
 CREATE TABLE selections(
 	selection_id MEDIUMINT,
 	entry_id MEDIUMINT,

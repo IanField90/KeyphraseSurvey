@@ -35,6 +35,7 @@
 			$result = mysql_query($query);
 			$row = mysql_fetch_array($result, MYSQL_ASSOC);
 			if(count($result) == 0){
+				//In theory should only happen if not all rows in 'entries' are sequential
 				echo 'An error occurred while retrieving from the database';
 				return -1;
 			}
@@ -71,9 +72,9 @@
 			include 'navigation_bar.php';
 			echo '<br /><br />';
 			echo '<div id="content"><h1>' . $title . '</h1>';
-			echo '<p>' . $body . '<p>';
+			echo '<br />' . $body . '<p /><br />';
 			echo '<form name="entry" action="process_entry.php" method="post">';
-			echo '<input type="radio" name="inputChoice" value="options" onClick="radioSelection()"/>Select options from below.';
+			echo '<input type="radio" name="inputChoice" value="options" onClick="radioSelection()" />Select options from below.';
 			echo '<table class="list">';
 			
 			$counter = 0; //Used for keyword index
@@ -89,8 +90,8 @@
 							echo '<td><input type="checkbox" name="selectedWords[]" onclick="chk_click()"/>' . $sorted_keywords[$counter] .'</td>';
 						}else{
 							//empty index so allow another item to be processed
-							$count_max++;//allow another print
-							$j--;//don't just leave an empty check box
+							$count_max++;//allow another check box to be printed
+							$j--;//don't just leave an empty check box or gap
 						}
 						$counter++;	
 					}
@@ -103,6 +104,7 @@
 		<p />
 		<input type="radio" name="inputChoice" value="none" onClick="radioSelection()"/>None of the above.
 		<p />
+		<br />
 		<input type="button" value="Submit" id="subButton" onClick="prepareForm()"/>
 		</form>
 		</div>
