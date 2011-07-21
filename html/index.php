@@ -74,7 +74,7 @@
 			echo '<div id="content"><h1>' . $title . '</h1>';
 			echo '<br />' . $body . '<p /><br />';
 			echo '<form name="entry" action="process_entry.php" method="post">';
-			echo '<input type="radio" name="inputChoice" value="options" onClick="radioSelection()" />Select options from below.';
+			echo '<input type="radio" name="inputChoice" value="options" onClick="radioSelection()" />'. $sel_bellow;
 			echo '<table class="list">';
 			
 			$counter = 0; //Used for keyword index
@@ -103,7 +103,7 @@
 		?>
 
 		<p />
-		<input type="radio" name="inputChoice" value="none" onClick="radioSelection()"/>None of the above.
+		<input type="radio" name="inputChoice" value="none" onClick="radioSelection()"/><?php echo $sel_none; ?>
 		<p />
 		<br />
 		<input type="button" value="Submit" id="subButton" onClick="prepareForm()"/>
