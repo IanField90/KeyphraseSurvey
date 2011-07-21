@@ -1,6 +1,7 @@
 <?php 
 	//This ensures that the locale customisations are included
 	include 'config/locales.php';
+	session_start();
 ?>
 <html>
 	<head>
@@ -13,7 +14,6 @@
 	<body>
 
 		<?php
-			session_start();
 			$sel_home = "selected"; $sel_about = ""; //used for CSS
 			$MAX_SELECTIONS = 15;
 			//Set up and open database
@@ -31,7 +31,7 @@
 			//Get a random entry from the database, ensuring that it is in range
 			$rand = rand(1, $result[0]);
 		  	$_SESSION['entryID'] = $rand;
-			$query = "SELECT * FROM Entries WHERE Entry_ID = ".$rand;
+			$query = "SELECT * FROM entries WHERE entry_id = ".$rand;
 			$result = mysql_query($query);
 			$row = mysql_fetch_array($result, MYSQL_ASSOC);
 			if(count($result) == 0){
