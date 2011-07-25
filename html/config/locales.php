@@ -8,4 +8,5 @@
 	$site_name = "Base";
 	$sel_bellow = "Select options from below.";
 	$sel_none = "None of the above.";
+	$privacy_page_title = "Privacy";
 ?>

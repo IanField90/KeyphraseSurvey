@@ -32,16 +32,25 @@ function prepareForm(){
 		// set up form data POST form to php page
 		var selections = document.getElementsByName("selectedWords[]");
 		var selected = new Array(MAX_SELECTIONS);
+		var void_form = true;
 		for(var i=0; i<MAX_SELECTIONS; i++){
 			//fill selected array with all checked status
 			selected[i] = selections[i].checked; //without this would just get 111, no 0's
+			if(void_form == true && selections[i].checked){
+				void_form = false;
+			}
 		}
 		
-		// 10000101000 selected array used
-		$.post("process_entry.php", { 'choices[]': selected }, function(data){
-			alert("Thank-you for your time!");
-			location.reload(true); // display a new page
-		});
+		if(!void_form){
+			// 10000101000 selected array used
+			$.post("process_entry.php", { 'choices[]': selected }, function(data){
+				alert("Thank-you for your time!");
+				location.reload(true); // display a new page
+			});
+		}
+		else{
+			alert("Please make a selection!");
+		}
 	}
 	else if(document.entry.inputChoice[1].checked == true){
 		//None from above.

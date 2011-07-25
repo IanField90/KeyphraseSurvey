@@ -11,5 +11,10 @@
 				<?php echo $link_about; ?>
 			</a>
 		</li>
+		<li>
+			<a href="/SummerStudent/html/content/privacy.php">
+				<?php echo $privacy_page_title; ?>
+			</a>
+		</li>
 	</ul>
 </div>
