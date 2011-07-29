@@ -94,7 +94,10 @@
 							 '<td class="keyword">'. $sorted_keywords[$counter] .'</td>';
 						}else{
 							//empty index so allow another item to be processed
-							$count_max++;//allow another check box to be printed
+							if($count_max < 15){
+								$count_max++;//allow another check box to be printed
+								//Condition prevents null DB entries causing an infinite loop
+							}
 							$j--;//don't just leave an empty check box or gap
 						}
 						$counter++;	
