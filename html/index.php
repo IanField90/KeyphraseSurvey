@@ -70,8 +70,11 @@
 			
 			echo '<div id="container">';
 			include 'navigation_bar.php';
+			
 			echo '<br /><br />';
-			echo '<div id="content"><h1>' . $title . '</h1>';
+			echo '<div id="content">';
+			echo 'Please read the following article and then select the keywords or phrases which you find relevent to the article.';
+			echo '<h1>' . $title . '</h1>';
 			echo '<br />' . $body . '<p /><br />';
 			echo '<form name="entry" action="process_entry.php" method="post">';
 			echo '<input type="radio" name="inputChoice" value="options" onClick="radioSelection()" />'. $sel_bellow;
