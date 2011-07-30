@@ -62,20 +62,19 @@
 					if($keywords[$i] == $sorted_keywords[$j]){
 						//If keyword i is now the same as j
 						$positions[$i] = $j; //j is new location, stored in index i
-
 					}
 				}
 			}
+			//print_r($positions);
 			$_SESSION['positions'] = $positions; //store for access on updating the database
 			
 			echo '<div id="container">';
 			include 'navigation_bar.php';
-			
 			echo '<br /><br />';
 			echo '<div id="content">';
-			echo 'Please read the following article and then select the keywords or phrases which you find relevent to the article.';
+			echo $text_home;
 			echo '<h1>' . $title . '</h1>';
-			echo '<br />' . $body . '<p /><br />';
+			echo '<br />' . htmlspecialchars($body) . '<p /><br />';
 			echo '<form name="entry" action="process_entry.php" method="post">';
 			echo '<input type="radio" name="inputChoice" value="options" onClick="radioSelection()" />'. $sel_bellow;
 			echo '<table class="list">';
@@ -91,7 +90,7 @@
 						//if keyword array is not blank (retained index) then display check box for it
 						if($sorted_keywords[$counter] != NULL){
 							echo '<td><input type="checkbox" name="selectedWords[]" onclick="chk_click()"/></td>'.
-							 '<td class="keyword">'. $sorted_keywords[$counter] .'</td>';
+							 '<td class="keyword">'. htmlspecialchars($sorted_keywords[$counter]) .'</td>';
 						}else{
 							//empty index so allow another item to be processed
 							if($count_max < 15){
@@ -112,7 +111,7 @@
 		<input type="radio" name="inputChoice" value="none" onClick="radioSelection()"/><?php echo $sel_none; ?>
 		<p />
 		<br />
-		<input type="button" value="Submit" id="subButton" onClick="prepareForm()"/>
+		<input type="button" value="<?php echo $btn_text; ?>" id="subButton" onClick="prepareForm()"/>
 		</form>
 		</div>
 		<?php include 'footer.php'; ?>

@@ -44,7 +44,7 @@ function prepareForm(){
 		if(!void_form){
 			// 10000101000 selected array used
 			$.post("process_entry.php", { 'choices[]': selected }, function(data){
-				alert("Thank-you for your time!");
+				alert("Thank-you for your time!"); //Can be removed or re-worded
 				location.reload(true); // display a new page
 			});
 		}
