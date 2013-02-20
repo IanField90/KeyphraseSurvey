@@ -18,3 +18,4 @@ After this you can proceed to repeat this process numerous times over the large 
 
 This website is intended for landscape viewing on modern mobile devices.
 
+[Paper](http://www.iariajournals.org/life_sciences/lifsci_v4_n12_2012_paged.pdf)
